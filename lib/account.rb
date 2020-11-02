@@ -1,19 +1,25 @@
-require 'transactions'
+require_relative 'transactions.rb'
+require_relative 'printer.rb'
 
 class Account
-  attr_accessor :balance
+  attr_accessor :balance, :history
   def initialize
     @balance = 0
     @history = []
   end
 
-  def deposit(amount)
-    @balance += amount
-    @history << Transactions.new(amount, @balance)
+  def deposit(deposit_amount)
+    @balance += deposit_amount
+    @history << Transactions.new(true, deposit_amount, @balance)
   end
   
-  def withdraw(amount)
-    @balance -= amount
+  def withdraw(withdraw_amount)
+    @balance -= withdraw_amount
+    @history << Transactions.new(false, withdraw_amount, @balance)
+  end
+
+  def display_balance
+    Printer.print(@history)   
   end
   
 end

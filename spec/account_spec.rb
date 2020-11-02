@@ -16,6 +16,10 @@ describe Account do
       @account.withdraw(500)
       expect(@account.balance).to eq(500)
     end
-   
+   it "transaction items get added to history" do
+    @account.deposit(1000)
+    @account.withdraw(500)
+    expect(@account.history.length).to eq(2)
+   end
 
 end
