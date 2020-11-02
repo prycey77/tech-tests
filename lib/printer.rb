@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Printer
   def self.print(history)
     statement = "date    || credit || debit || balance\n"

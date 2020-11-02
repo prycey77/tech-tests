@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'transactions.rb'
 require_relative 'printer.rb'
 

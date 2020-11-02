@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'account.rb'
 
 describe Account do
