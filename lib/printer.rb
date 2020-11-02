@@ -9,8 +9,8 @@ class Printer
       else
         statement += " ||   || " + transaction.amount.to_s
       end
-     puts statement += transaction.balance.to_s + "\n"
+    puts statement += transaction.balance.to_s + "\n"
     end
+    statement
   end
-
 end
