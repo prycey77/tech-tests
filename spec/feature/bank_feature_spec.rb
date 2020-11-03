@@ -6,6 +6,9 @@ describe Account do
     account.deposit(1000)
     account.deposit(2000)
     account.withdraw(500)
+    expect(account.display_balance).to include("date || credit || debit || balance")
     expect(account.display_balance).to include("2500")
+    expect(account.display_balance).to include("2000")
+    expect(account.display_balance).to include("500")
   end
 end
