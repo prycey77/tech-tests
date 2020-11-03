@@ -32,7 +32,7 @@ class Printer
   end
 
   def date_option(transaction, option)
-    if option == 1
+    if option.to_s.include?("1")
       date = transaction.date.split("/")
       date[0], date[1] = date[1],date[0]
       date = date.join('/')
