@@ -38,4 +38,11 @@ describe Account do
     end
     expect(printed).to eq("date || credit || debit || balance\n03/11/2020 || 500.00 ||  || 5000.00\n01/01/2019 || 500.00 ||  || 4500.00\n02/11/1989 || 1500.00 ||  || 4000.00\n02/11/1979 || 2500.00 ||  || 2500.00\n")
   end
+  it 'Displays dates in American format' do
+    @account.deposit(1500, '02/11/1989')
+    printed = capture_stdout do
+      @account.display_balance(1)
+    end
+    expect(printed).to include('11/02/1989')
+  end
 end
