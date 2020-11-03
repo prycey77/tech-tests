@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
 class Printer
-  def print(history)
-    statement = "date || credit || debit || balance\n"
-    history.reverse.each do |transaction|
-      statement += transaction.date + ' || '
-      statement += if transaction.type == true
-                      '%.2f' % transaction.amount+ ' || || '
-                   else
-                      ' || || ' + '%.2f' % transaction.amount + ' || '
-                   end
-      puts statement += '%.2f' % transaction.balance + "\n"
-    end
-    statement
+  def initialize
+    @header = "|| date || credit || debit || balance\n"
+    @statement_array = []
+    @statement_array << @header
   end
+
+
+  def print(history)
+    
+    history.reverse.each do |transaction|
+      @statement_array << transaction.date
+      @statement_array << transaction.deposit
+      @statement_array << transaction.debit
+      @statement_array << transaction.balance                  
+      @statement_array << "\n"
+    end
+    puts@statement_array.join(" || ")
+    @statement_array.join(" || ")
+    
+  end
+
 end

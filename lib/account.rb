@@ -10,14 +10,14 @@ class Account
     @history = []
   end
 
-  def deposit(deposit_amount)
-    @balance += deposit_amount
-    @history << Transactions.new(true, deposit_amount, @balance)
+  def deposit(deposit)
+    @balance += deposit
+    @history << Transactions.new(nil, deposit, @balance)
   end
 
-  def withdraw(withdraw_amount)
-    @balance -= withdraw_amount
-    @history << Transactions.new(false, withdraw_amount, @balance)
+  def withdraw(debit)
+    @balance -= debit
+    @history << Transactions.new(debit, nil, @balance)
   end
 
   def display_balance(printer = Printer.new)

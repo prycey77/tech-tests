@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Transactions
-  attr_accessor :amount, :balance, :date, :type
+  attr_accessor :deposit, :debit, :balance, :date, :type
 
-  def initialize(type, amount, balance, date = (Time.now).strftime('%d/%m/%Y'))
-    @type = type
-    @amount = amount
+  def initialize(deposit, debit, balance, date = (Time.now).strftime('%d/%m/%Y'))
+    @deposit = deposit
+    @debit = debit
     @balance = balance
     @date = date
   end
