@@ -4,7 +4,6 @@ require 'printer'
 require 'transactions'
 
 describe Printer do
-
   it 'prints the statement header' do
     transaction = instance_double(Transactions, deposit: nil, debit: 0, date: '01/11/2020')
     statement = [transaction]
@@ -24,7 +23,7 @@ describe Printer do
     end
     expect(printed).to include '01/11/2020 ||  || 0.00 || 0.00'
   end
-  
+
   it 'prints American formatted dates when option selected' do
     transaction = instance_double(Transactions, deposit: nil, debit: 0, date: '01/11/2020')
     statement = [transaction]

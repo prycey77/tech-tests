@@ -21,32 +21,45 @@ I would like to print a statement with date of when
 I deposited/withdrew money.
 ```
 
-Extra user story:
+Extra user stories:
 
 ```
 As a user, I may want to add in a transaction that was missing, by passing it with a date in the past (eg. account.deposit(50, ’03/08/2020’) or whatever date format makes sense for your code).
 This should in turn readjust my statement so that the transaction shows in the right place, and the balances are still correct.
 ```
 
+```
+As a user that loves all thing American
+So that I can read the date in a format that I prefer
+I would like to select an option to view the date in American format
+
 #### To use:
 
 ```
+
 $ bundle
 $ irb
+
 > load './lb/account'
+
 ```
 
 ```
+
 account = Account.new
 account.deposit(100) #deposit amount
 account.withdraw(20) #withdraw amount
-account.display_balance #displays recent transactions
+account.display_balance #displays recent transactions (dd/mm/yyyy)
+account.display_balance(1)
+
 ```
 
 #### To run tests:
 
 ```
-$ rspec
+
+\$ rspec
+
 ```
 
 #### Specification requirements:
@@ -63,8 +76,12 @@ When she prints her bank statement
 Then she would see
 
 ```
+
 date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
+
+```
+
 ```
