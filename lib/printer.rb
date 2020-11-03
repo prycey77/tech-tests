@@ -20,6 +20,9 @@ class Printer
     @statement_array.join
     
   end
+  
+  private
+
   def format_array(transaction)
     transaction.deposit.nil? ? deposit = "" : deposit = '%.2f' % transaction.deposit 
     transaction.debit.nil? ? debit = "" : debit = '%.2f' % transaction.debit
