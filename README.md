@@ -21,6 +21,13 @@ I would like to print a statement with date of when
 I deposited/withdrew money.
 ```
 
+Extra user story:
+
+```
+As a user, I may want to add in a transaction that was missing, by passing it with a date in the past (eg. account.deposit(50, ’03/08/2020’) or whatever date format makes sense for your code).
+This should in turn readjust my statement so that the transaction shows in the right place, and the balances are still correct.
+```
+
 #### To use:
 
 ```
