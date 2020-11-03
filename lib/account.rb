@@ -12,12 +12,12 @@ class Account
 
   def deposit(deposit, date = (Time.now).strftime('%d/%m/%Y'))
     @balance += deposit
-    @history << Transactions.new(nil, deposit, @balance, date)
+    @history << Transactions.new(deposit, nil, @balance, date)
   end
 
   def withdraw(debit, date = (Time.now).strftime('%d/%m/%Y'))
     @balance -= debit
-    @history << Transactions.new(debit, nil, @balance, date)
+    @history << Transactions.new(nil,debit, @balance, date)
   end
 
   def display_balance(printer = Printer.new)
