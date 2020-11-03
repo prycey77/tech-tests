@@ -4,20 +4,17 @@ require_relative 'transactions.rb'
 require_relative 'printer.rb'
 
 class Account
-  attr_accessor :balance, :history
+  attr_accessor :history
   def initialize
-    @balance = 0
     @history = []
   end
 
   def deposit(deposit, date = (Time.now).strftime('%d/%m/%Y'))
-    @balance += deposit
-    @history << Transactions.new(deposit, nil, @balance, date)
+    @history << Transactions.new(deposit, nil, date)
   end
 
   def withdraw(debit, date = (Time.now).strftime('%d/%m/%Y'))
-    @balance -= debit
-    @history << Transactions.new(nil, debit, @balance, date)
+    @history << Transactions.new(nil, debit, date)
   end
 
   def display_balance(printer = Printer.new)
