@@ -6,11 +6,11 @@ class Printer
     history.reverse.each do |transaction|
       statement += transaction.date + ' || '
       statement += if transaction.type == true
-                     transaction.amount.to_s + ' ||  || '
+                      '%.2f' % transaction.amount+ ' ||  || '
                    else
-                     ' ||   || ' + transaction.amount.to_s + ' || '
+                      ' ||   || ' + '%.2f' % transaction.amount + ' || '
                    end
-      puts statement += transaction.balance.to_s + "\n"
+      puts statement += '%.2f' % transaction.balance + "\n"
     end
     statement
   end
