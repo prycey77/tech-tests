@@ -10,7 +10,7 @@ class Account
     @history = []
   end
 
-  def deposit(deposit)
+  def deposit(deposit, date = Time.now)
     @balance += deposit
     @history << Transactions.new(nil, deposit, @balance)
   end

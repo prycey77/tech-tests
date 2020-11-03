@@ -14,7 +14,7 @@ class Printer
       @statement_array << format_array(transaction)
     end
     puts @statement_array.join
-  @statement_array.join
+    @statement_array.join
     
   end
   def format_array(transaction)

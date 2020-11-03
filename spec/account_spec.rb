@@ -22,4 +22,10 @@ describe Account do
     @account.withdraw(500)
     expect(@account.history.length).to eq(2)
   end
+  it 'a transaction can be added with a different date' do
+    @account.deposit(1000)
+    @account.deposit(1000,'01-01-1990')
+    expect(@account.balance).to eq(2000)
+  end
+
 end
