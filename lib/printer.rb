@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class Printer
-  def self.print(history)
+  def print(history)
     statement = "date    || credit || debit || balance\n"
-    history.each do |transaction|
+    history.reverse.each do |transaction|
       statement += transaction.date + ' || '
       statement += if transaction.type == true
                      transaction.amount.to_s + ' ||  || '
                    else
-                     ' ||   || ' + transaction.amount.to_s
+                     ' ||   || ' + transaction.amount.to_s + ' || '
                    end
       puts statement += transaction.balance.to_s + "\n"
     end

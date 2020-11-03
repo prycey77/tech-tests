@@ -20,7 +20,7 @@ class Account
     @history << Transactions.new(false, withdraw_amount, @balance)
   end
 
-  def display_balance
-    Printer.print(@history)
+  def display_balance(printer = Printer.new)
+    printer.print(@history)
   end
 end
