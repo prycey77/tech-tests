@@ -1,4 +1,4 @@
-#Bank tech test
+# Bank tech test
 
 User stories:
 
@@ -21,7 +21,7 @@ I would like to print a statement with date of when
 I deposited/withdrew money.
 ```
 
-####To use:
+#### To use:
 
 ```
 $ bundle
@@ -36,13 +36,13 @@ account.withdraw(20) #withdraw amount
 account.display_balance #displays recent transactions
 ```
 
-####To run tests:
+#### To run tests:
 
 ```
 $ rspec
 ```
 
-####Specification requirements:
+#### Specification requirements:
 
 You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
 Deposits, withdrawal.
