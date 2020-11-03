@@ -13,10 +13,10 @@ describe Account do
   end
   it 'sorts the transactions by date' do
     account = Account.new
-    account.deposit(1000, '03/01/2020')
-    account.deposit(2000, '01/01/2001')
-    account.deposit(1000, '03/01/1999')
-    account.deposit(2000, '02/02/2019')
-    expect(account.display_balance).to eq ("date || credit || debit || balance\n03/01/2020 ||  || 1000.00 || 1000.00\n02/02/2019 ||  || 2000.00 || 6000.00\n01/01/2001 ||  || 2000.00 || 3000.00\n03/01/1999 ||  || 1000.00 || 4000.00\n")
+    account.deposit(0, '03/01/2020')
+    account.deposit(0, '01/01/2001')
+    account.deposit(0, '03/01/1999')
+    account.deposit(0, '02/02/2019')
+    expect(account.display_balance).to eq ("date || credit || debit || balance\n03/01/2020 ||  || 0.00 || 0.00\n02/02/2019 ||  || 0.00 || 0.00\n01/01/2001 ||  || 0.00 || 0.00\n03/01/1999 ||  || 0.00 || 0.00\n")
   end
 end
