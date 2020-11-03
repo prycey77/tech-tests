@@ -17,7 +17,7 @@ class Account
     @history << Transactions.new(nil, debit, date)
   end
 
-  def display_balance(printer = Printer.new, option = 0)
-    printer.print(@history, option)
+  def display_balance(printer = Printer.new(@history, option = 0))
+    printer.print
   end
 end

@@ -3,15 +3,17 @@
 require 'date'
 
 class Printer
-  def initialize
+  def initialize(history, option)
+    @history = history
+    @option = option
     @header = "date || credit || debit || balance\n"
     @statement_array = []
     @balance = 0
   end
 
-  def print(history, option)
-    sort_array(history).each do |transaction|
-      @statement_array << format_array(transaction, option)
+  def print
+    sort_array.each do |transaction|
+      @statement_array << format_array(transaction)
     end
     @statement_array << @header
     @statement_array.reverse!
@@ -20,25 +22,25 @@ class Printer
 
   private
 
-  def format_array(transaction, option)
-    deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
-    debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
-    transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
-    "#{date_option(transaction, option)} || #{deposit} || #{debit} || #{format('%.2f', @balance)}\n"
-  end
-
-  def sort_array(history)
-    history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
-  end
-
-  def date_option(transaction, option)
-    if option.to_s.include?("1")
-      date = transaction.date.split("/")
-      date[0], date[1] = date[1],date[0]
-      date = date.join('/')
+  def format_array(transaction)
+    if @option.to_s.include?("1")
+      date = date_option(transaction)
     else
       date = transaction.date
     end
-    date
+    deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
+    debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
+    transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
+    "#{date} || #{deposit} || #{debit} || #{format('%.2f', @balance)}\n"
+  end
+
+  def sort_array
+    @history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
+  end
+
+  def date_option(transaction)
+      date = transaction.date.split("/")
+      date[0], date[1] = date[1],date[0]
+      date.join('/')
   end
 end
