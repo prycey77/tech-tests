@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../lib/account.rb'
 describe Account do
   before(:each) do

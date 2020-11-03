@@ -17,11 +17,13 @@ describe Account do
     @account.withdraw(500)
     expect(@account.display_balance).to include('500')
   end
+  
   it 'transaction items get added to history' do
     @account.deposit(1000)
     @account.withdraw(550)
     expect(@account.display_balance).to include('450')
   end
+  
   it 'a transaction can be added with a different date' do
     @account.deposit(1000)
     @account.deposit(1000, '01/01/1990')
