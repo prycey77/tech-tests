@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'date'
 
 class Printer
@@ -8,9 +9,7 @@ class Printer
     @balance = 0
   end
 
-
   def print(history)
-    
     sort_array(history).each do |transaction|
       @statement_array << format_array(transaction)
     end
@@ -18,20 +17,18 @@ class Printer
     @statement_array.reverse!
     puts @statement_array.join
     @statement_array.join
-    
   end
-  
+
   private
 
   def format_array(transaction)
-    transaction.deposit.nil? ? deposit = "" : deposit = '%.2f' % transaction.deposit 
-    transaction.debit.nil? ? debit = "" : debit = '%.2f' % transaction.debit
+    deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
+    debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
     transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
-    "#{transaction.date} || #{deposit} || #{debit} || #{'%.2f' % @balance}\n"
+    "#{transaction.date} || #{deposit} || #{debit} || #{format('%.2f', @balance)}\n"
   end
 
   def sort_array(history)
     history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
   end
-
 end

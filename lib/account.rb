@@ -17,7 +17,7 @@ class Account
 
   def withdraw(debit, date = (Time.now).strftime('%d/%m/%Y'))
     @balance -= debit
-    @history << Transactions.new(nil,debit, @balance, date)
+    @history << Transactions.new(nil, debit, @balance, date)
   end
 
   def display_balance(printer = Printer.new)
