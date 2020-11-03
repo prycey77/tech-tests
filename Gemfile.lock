@@ -48,6 +48,7 @@ GEM
     strscan (1.0.3)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    timecop (0.9.2)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -58,6 +59,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
+  timecop
 
 BUNDLED WITH
    2.1.4
