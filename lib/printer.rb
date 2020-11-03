@@ -16,7 +16,6 @@ class Printer
     @statement_array << @header
     @statement_array.reverse!
     puts @statement_array.join
-    @statement_array.join
   end
 
   private

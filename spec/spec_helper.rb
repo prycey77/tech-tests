@@ -14,6 +14,17 @@ require_relative '../lib/printer'
 require_relative '../lib/transactions'
 require_relative '../lib/account'
 
+require 'stringio'
+
+def capture_stdout(&blk)
+  old = $stdout
+  $stdout = fake = StringIO.new
+  blk.call
+  fake.string
+ensure
+  $stdout = old
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
