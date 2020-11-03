@@ -21,6 +21,17 @@ class Printer
   private
 
   def format_array(transaction, option)
+    deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
+    debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
+    transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
+    "#{date_option(transaction, option)} || #{deposit} || #{debit} || #{format('%.2f', @balance)}\n"
+  end
+
+  def sort_array(history)
+    history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
+  end
+
+  def date_option(transaction, option)
     if option == 1
       date = transaction.date.split("/")
       date[0], date[1] = date[1],date[0]
@@ -28,14 +39,6 @@ class Printer
     else
       date = transaction.date
     end
-
-    deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
-    debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
-    transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
-    "#{date} || #{deposit} || #{debit} || #{format('%.2f', @balance)}\n"
-  end
-
-  def sort_array(history)
-    history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
+    date
   end
 end
