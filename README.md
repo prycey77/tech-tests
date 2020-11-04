@@ -1,5 +1,30 @@
 # Bank tech test
 
+#### Technologies: Ruby, Rspec
+
+### [Makers Academy](https://makers.tech/) - Week 10 Solo Tech Test
+
+#### Specification requirements:
+
+You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
+Deposits, withdrawal.
+Account statement (date, amount, balance) printing.
+Data can be kept in memory (it doesn't need to be stored to a database or anything).
+Acceptance criteria
+Given a client makes a deposit of 1000 on 10-01-2012
+And a deposit of 2000 on 13-01-2012
+And a withdrawal of 500 on 14-01-2012
+When she prints her bank statement
+Then she would see
+
+```
+date || credit || debit || balance
+14/01/2012 || || 500.00 || 2500.00
+13/01/2012 || 2000.00 || || 3000.00
+10/01/2012 || 1000.00 || || 1000.00
+
+```
+
 User stories:
 
 ```
@@ -29,9 +54,10 @@ This should in turn readjust my statement so that the transaction shows in the r
 ```
 
 ```
-As a user that loves all thing American
+As a user that loves all things American
 So that I can read the date in a format that I prefer
 I would like to select an option to view the date in American format
+```
 
 #### To use:
 
@@ -50,38 +76,18 @@ account = Account.new
 account.deposit(100) #deposit amount
 account.withdraw(20) #withdraw amount
 account.display_balance #displays recent transactions (dd/mm/yyyy)
-account.display_balance(1)
+account.display_balance(1) #displays recent transaction (mm/dd/yyyy)
 
 ```
 
-#### To run tests:
+#### Preview:
+
+<img src='./images/bank.gif'>
+
+#### To run Rspec tests:
 
 ```
 
-\$ rspec
-
-```
-
-#### Specification requirements:
-
-You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-Deposits, withdrawal.
-Account statement (date, amount, balance) printing.
-Data can be kept in memory (it doesn't need to be stored to a database or anything).
-Acceptance criteria
-Given a client makes a deposit of 1000 on 10-01-2012
-And a deposit of 2000 on 13-01-2012
-And a withdrawal of 500 on 14-01-2012
-When she prints her bank statement
-Then she would see
-
-```
-
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-
-```
+$ rspec
 
 ```
