@@ -82,7 +82,7 @@ account.display_balance(1) #displays recent transaction (mm/dd/yyyy)
 
 #### Preview:
 
-<img src='./images/bank.gif'>
+<img src='./images/bankgif.gif'>
 
 #### To run Rspec tests:
 
