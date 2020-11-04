@@ -6,18 +6,18 @@ class Printer
   def initialize(history, option)
     @history = history
     @option = option
-    @header = "date || credit || debit || balance\n"
-    @statement_array = []
     @balance = 0
   end
 
   def print
+    header = "date || credit || debit || balance\n"
+    statement_array = []
     sort_array.each do |transaction|
-      @statement_array << format_array(transaction)
+      statement_array << format_array(transaction)
     end
-    @statement_array << @header
-    @statement_array.reverse!
-    puts @statement_array.join
+    statement_array << header
+    statement_array.reverse!
+    puts statement_array.join
   end
 
   private

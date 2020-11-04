@@ -31,7 +31,7 @@ describe Account do
   it 'sorts transactions by date and adjusts balance' do
     @account.deposit(1500, '02/11/1989')
     @account.deposit(2500, '02/11/1979')
-    @account.deposit(500)
+    @account.deposit(500, '03/11/2020')
     @account.deposit(500, '01/01/2019')
     printed = capture_stdout do
       @account.display_balance
