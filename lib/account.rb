@@ -9,16 +9,20 @@ class Account
     @history = []
   end
 
-  def deposit(deposit, date = (Time.now).strftime('%d/%m/%Y'))
-    @history << Transactions.new(deposit, nil, date)
+  def deposit(deposit, date = nil)   
+    @history << Transactions.new(deposit, nil, datetime(date))
   end
 
-  def withdraw(debit, date = (Time.now).strftime('%d/%m/%Y'))
-    @history << Transactions.new(nil, debit, date)
+  def withdraw(debit, date = nil)
+    @history << Transactions.new(nil, debit, datetime(date))
   end
 
   def display_balance(option = 0)
     printer = Printer.new(@history, option)
     printer.print
+  end
+private
+  def datetime(date)
+    date.nil? ? Time.now : Time.parse(date)
   end
 end

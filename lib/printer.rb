@@ -26,7 +26,7 @@ class Printer
     date = if @option.to_s.include?('1')
              date_option(transaction)
            else
-             transaction.date
+             transaction.date.strftime("%d/%m/%Y")
            end
     deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
     debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
@@ -35,12 +35,10 @@ class Printer
   end
 
   def sort_array
-    @history.sort_by { |s| Date.strptime(s.date, '%d/%m/%Y') }
+    @history.sort_by { |s| s.date }
   end
 
   def date_option(transaction)
-    date = transaction.date.split('/')
-    date[0], date[1] = date[1], date[0]
-    date.join('/')
+    transaction.date.strftime("%m/%d/%Y")
   end
 end
