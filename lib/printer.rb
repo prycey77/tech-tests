@@ -23,11 +23,7 @@ class Printer
   private
 
   def format_array(transaction)
-    date = if @option.to_s.include?('1')
-             date_option(transaction)
-           else
-             transaction.date.strftime("%d/%m/%Y")
-           end
+    date = date_option(transaction)   
     deposit = transaction.deposit.nil? ? '' : '%.2f' % transaction.deposit
     debit = transaction.debit.nil? ? '' : '%.2f' % transaction.debit
     transaction.debit.nil? ? @balance += transaction.deposit : @balance -= transaction.debit
@@ -39,6 +35,6 @@ class Printer
   end
 
   def date_option(transaction)
-    transaction.date.strftime("%m/%d/%Y")
+    @option.to_s.include?('1') ? transaction.date.strftime("%m/%d/%Y") : transaction.date.strftime("%d/%m/%Y")
   end
 end
