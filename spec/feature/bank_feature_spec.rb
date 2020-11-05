@@ -27,14 +27,14 @@ describe Account do
     expect(printed).to include('500')
   end
   it 'sorts the transactions by date' do
-    @account.deposit(0,)
+    @account.deposit(0)
     @account.deposit(0, '01/01/2001')
     @account.deposit(0, '03/01/1999')
     @account.deposit(0, '02/02/2019')
     printed = capture_stdout do
       @account.display_balance
     end
-    expect(printed).to eq("date || credit || debit || balance\n#{@date} || 0.00 ||  || 0.00\n02/02/2019 || 0.00 ||  || 0.00\n01/01/2001 || 0.00 ||  || 0.00\n03/01/1999 || 0.00 ||  || 0.00\n")
+    expect(printed).to eq("date || credit || debit || balance\n#{@date} || 0.00 || || 0.00\n02/02/2019 || 0.00 || || 0.00\n01/01/2001 || 0.00 || || 0.00\n03/01/1999 || 0.00 || || 0.00\n")
   end
   it 'sorts transactions by date and adjusts balance' do
     @account.deposit(1500, '02/11/1989')
@@ -44,7 +44,7 @@ describe Account do
     printed = capture_stdout do
       @account.display_balance
     end
-    expect(printed).to eq("date || credit || debit || balance\n#{@date} || 500.00 ||  || 5000.00\n01/01/2019 || 500.00 ||  || 4500.00\n02/11/1989 || 1500.00 ||  || 4000.00\n02/11/1979 || 2500.00 ||  || 2500.00\n")
+    expect(printed).to eq("date || credit || debit || balance\n#{@date} || 500.00 || || 5000.00\n01/01/2019 || 500.00 || || 4500.00\n02/11/1989 || 1500.00 || || 4000.00\n02/11/1979 || 2500.00 || || 2500.00\n")
   end
   it 'Displays dates in American format' do
     @account.deposit(1500, '02/11/1989')

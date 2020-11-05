@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'printer'
+require 'timecop'
 require 'transactions'
 
 describe Printer do
@@ -30,7 +31,7 @@ describe Printer do
     printed = capture_stdout do
       printer.print
     end
-    expect(printed).to include "#{@date} ||  || 0.00 || 0.00"
+    expect(printed).to include "#{@date} || || 0.00 || 0.00"
   end
 
   it 'prints American formatted dates when option selected' do
@@ -41,6 +42,6 @@ describe Printer do
     printed = capture_stdout do
       printer.print
     end
-    expect(printed).to include "#{american_date} ||  || 0.00 || 0.00"
+    expect(printed).to include "#{american_date} || || 0.00 || 0.00"
   end
 end

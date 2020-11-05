@@ -9,7 +9,7 @@ class Account
     @history = []
   end
 
-  def deposit(deposit, date = nil)   
+  def deposit(deposit, date = nil)
     @history << Transactions.new(deposit, nil, datetime(date))
   end
 
@@ -21,7 +21,9 @@ class Account
     printer = Printer.new(@history, option)
     printer.print
   end
-private
+
+  private
+
   def datetime(date)
     date.nil? ? Time.now : Time.parse(date)
   end
