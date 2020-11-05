@@ -1,4 +1,4 @@
-# Bank tech test
+# Bank tech test.  [![Build Status](https://travis-ci.org/prycey77/tech-tests.svg?branch=main)](https://travis-ci.org/prycey77/tech-tests)
 
 #### Technologies: Ruby, Rspec
 
